@@ -1,0 +1,62 @@
+#include <iostream> // Biblioteka wejścia/wyjścia strumieniowego.
+#include <bitset> // Biblioteka do operacji na bitach.
+#include <limits> // Biblioteka do uzyskiwania informacji o ograniczeniach typów danych.
+#include <iomanip> // Biblioteka do manipulacji strumieniami, np. do ustawienia precyzji wyjścia.
+// Funkcja szablonowa do wyświetlania binarnej reprezentacji 32-bitowego typu danych.
+template<typename T>
+void show_32_bits(T tmp) {
+	const unsigned int tmpSize = 32; // Rozmiar (liczba bitów) do wyświetlenia.
+	unsigned long int bits = *(unsigned long int*) (&tmp); // Konwersja wskaźnika na zmienną tmp na typ unsigned long int i odczytanie bitów.
+		std::bitset<tmpSize> tmpBits(bits); // Utworzenie obiektu bitset o podanej liczbie bitów.
+		std::cout << tmpBits << "\t" << tmpSize << " bits" << "\t" << std::fixed <<
+		std::setprecision(20) << tmp << std::endl;
+}
+// Funkcja szablonowa do wyświetlania binarnej reprezentacji 64-bitowego typu danych.
+template<typename T>
+void show_64_bits(T tmp) {
+	const unsigned int tmpSize = 64; // Rozmiar (liczba bitów) do wyświetlenia.
+	unsigned long long int bits = *(unsigned long long int*) (&tmp); // Konwersja wskaźnika na zmienną tmp na typ unsigned long long int i odczytanie bitów.
+		std::bitset<tmpSize> tmpBits(bits); // Utworzenie obiektu bitset o podanej liczbie bitów.
+		std::cout << tmpBits << "\t" << tmpSize << " bits" << "\t" << std::fixed <<
+		std::setprecision(20) << tmp << std::endl;
+}
+int main() {
+	int a = -91; // Przykładowa zmienna typu int.
+	show_32_bits(a); // Wywołanie funkcji show_32_bits zmienną a.
+
+	int m = 60;
+	show_32_bits(m);
+
+		int b = 91; // Przykładowa zmienna typu int.
+	show_32_bits(b); // Wywołanie funkcji show_32_bits zmienną b.
+
+		int c = std::numeric_limits<int>::min(); // Pobranie minimalnej wartości typu int.
+		show_32_bits(c); // Wywołanie funkcji show_32_bits zmienną c.
+
+		int d = std::numeric_limits<int>::max(); // Pobranie maksymalnej wartości typu int.
+		show_32_bits(d); // Wywołanie funkcji show_32_bits zmienną d.
+
+		double e = -100; // Przykładowa zmienna typu double.
+	show_64_bits(e); // Wywołanie funkcji show_64_bits zmienną e.
+
+	double f = 100; 
+	show_64_bits(f);
+	double g = std::numeric_limits<double>::min();
+	show_64_bits(g);
+	double h = std::numeric_limits<double>::max();
+	show_64_bits(h);
+		
+	float i = 10.5f;
+	show_32_bits(i);
+
+	float j = -10.5f;
+	show_32_bits(j);
+
+	int k = std::numeric_limits<float>::min();
+	show_32_bits(k);
+
+	int l = std::numeric_limits<float>::min();
+	show_32_bits(l);
+
+		return 0;
+}
