@@ -1,0 +1,34 @@
+
+#include <iostream>
+#include <cmath> 
+
+int main() {
+    double liczba1, liczba2; 
+    double oczekiwanaWartosc, suma;
+
+
+    std::cout << "Podaj pierwsza liczbe: ";
+    std::cin >> liczba1;
+
+   
+    std::cout << "Podaj druga liczbe: ";
+    std::cin >> liczba2;
+
+  
+    suma = liczba1 + liczba2;
+
+ 
+    std::cout << "Podaj oczekiwana wartosc sumy: ";
+    std::cin >> oczekiwanaWartosc;
+
+    // Porównaj wynik z oczekiwaną wartością z pewnym marginesem tolerancji.
+    double marginesTolerancji = 0.0001;
+    if (std::abs(suma - oczekiwanaWartosc) < marginesTolerancji) {
+        std::cout << "Wynik jest zgodny z oczekiwana wartoscia.\n";
+    }
+    else {
+        std::cout << "Wynik nie jest zgodny z oczekiwana wartoscia.\n";
+    }
+
+    return 0;
+}
