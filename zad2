@@ -1,0 +1,53 @@
+
+#include <iostream> // Biblioteka wejścia/wyjścia strumieniowego.
+#include <bitset> // Biblioteka do operacji na bitach.
+#include <limits> // Biblioteka do uzyskiwania informacji o ograniczeniach typów danych.
+#include <iomanip> // Biblioteka do manipulacji strumieniami, np. do ustawienia precyzji wyjścia.
+// Funkcja szablonowa do wyświetlania binarnej reprezentacji 32-bitowego typu danych.
+template<typename T>
+void show_32_bits(T tmp) {
+	const unsigned int tmpSize = 32; // Rozmiar (liczba bitów) do wyświetlenia.
+	unsigned long int bits = *(unsigned long int*) (&tmp); // Konwersja wskaźnika na zmienną tmp na typ unsigned long int i odczytanie bitów.
+		std::bitset<tmpSize> tmpBits(bits); // Utworzenie obiektu bitset o podanej liczbie bitów.
+		std::cout << tmpBits << "\t" << tmpSize << " bits" << "\t" << std::fixed <<
+		std::setprecision(20) << tmp << std::endl;
+}
+// Funkcja szablonowa do wyświetlania binarnej reprezentacji 64-bitowego typu danych.
+template<typename T>
+void show_64_bits(T tmp) {
+	const unsigned int tmpSize = 64; // Rozmiar (liczba bitów) do wyświetlenia.
+	unsigned long long int bits = *(unsigned long long int*) (&tmp); // Konwersja wskaźnika na zmienną tmp na typ unsigned long long int i odczytanie bitów.
+		std::bitset<tmpSize> tmpBits(bits); // Utworzenie obiektu bitset o podanej liczbie bitów.
+		std::cout << tmpBits << "\t" << tmpSize << " bits" << "\t" << std::fixed <<
+		std::setprecision(20) << tmp << std::endl;
+}
+int main() {
+	
+
+	int m = 60;
+	// Zamiana liczby na jej reprezentację U2 z wykorzystaniem 32 bitów.
+	std::bitset<32> u2_representation1(m);
+	show_32_bits(m);
+	show_32_bits(u2_representation1);
+	
+
+		int b = 91; // Przykładowa zmienna typu int.
+		// Zamiana liczby na jej reprezentację U2 z wykorzystaniem 32 bitów.
+		std::bitset<32> u2_representation2(b);
+	show_32_bits(b); // Wywołanie funkcji show_32_bits zmienną b.
+	show_32_bits(u2_representation2);
+
+
+		double e = -100; // Przykładowa zmienna typu double.
+		// Zamiana liczby na jej reprezentację U2 z wykorzystaniem 32 bitów.
+		std::bitset<32> u2_representation3(e);
+	show_64_bits(e); // Wywołanie funkcji show_64_bits zmienną e.
+	show_32_bits(u2_representation3);
+
+
+	
+		
+	
+
+		return 0;
+}
